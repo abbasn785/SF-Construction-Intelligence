@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,29 +15,36 @@
       background: #f7f7f7;
       color: #222;
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 48px 20px;
     }
+
     .card {
       background: #fff;
       padding: 32px;
       border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
-    h1, h2 {
+
+    h1,
+    h2 {
       margin-top: 0;
       color: #111;
     }
+
     .tagline {
       font-size: 1.1rem;
       color: #555;
       margin-bottom: 24px;
     }
+
     ul {
       padding-left: 20px;
     }
+
     .cta {
       display: inline-block;
       margin-top: 20px;
@@ -46,19 +54,72 @@
       text-decoration: none;
       border-radius: 8px;
     }
+
     .section {
       margin-top: 32px;
     }
+
     footer {
       margin-top: 36px;
       font-size: 0.95rem;
       color: #666;
     }
+
     a {
+      color: #111;
+    }
+
+    .terms-link {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      max-width: 560px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 28px 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal-close {
+      float: right;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+      line-height: 1;
+      padding: 0 4px;
+    }
+
+    .modal-close:hover {
       color: #111;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="card">
@@ -70,8 +131,10 @@
       <div class="section">
         <h2>What We Do</h2>
         <p>
-          SF Construction Intelligence is a paid digital information service that analyzes recent San Francisco building permit activity
-          and turns it into a concise weekly lead report. The goal is to help construction-related businesses identify projects that may
+          SF Construction Intelligence is a paid digital information service that analyzes recent San Francisco building
+          permit activity
+          and turns it into a concise weekly lead report. The goal is to help construction-related businesses identify
+          projects that may
           need bidding, materials, labor, or specialty services.
         </p>
       </div>
@@ -90,7 +153,8 @@
       <div class="section">
         <h2>Who It’s For</h2>
         <p>
-          This service is intended for subcontractors, suppliers, estimators, sales teams, and other construction industry professionals
+          This service is intended for subcontractors, suppliers, estimators, sales teams, and other construction
+          industry professionals
           looking for new project opportunities in San Francisco.
         </p>
       </div>
@@ -98,7 +162,8 @@
       <div class="section">
         <h2>Delivery</h2>
         <p>
-          This is a subscription-based digital product. Subscribers are billed on a recurring basis and receive their report electronically.
+          This is a subscription-based digital product. Subscribers are billed on a recurring basis and receive their
+          report electronically.
           No physical goods are shipped.
         </p>
       </div>
@@ -109,9 +174,9 @@
           Choose the plan that works best for your business. Both options include the full weekly
           SF Construction Intelligence report delivered by email.
         </p>
-      
+
         <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:20px;">
-          
+
           <div style="flex:1; min-width:240px; border:1px solid #eee; padding:20px; border-radius:10px;">
             <h3>Monthly</h3>
             <p style="font-size:24px; margin:10px 0;"><strong>$59 / month</strong></p>
@@ -120,7 +185,7 @@
               Subscribe Monthly
             </a>
           </div>
-      
+
           <div style="flex:1; min-width:240px; border:1px solid #eee; padding:20px; border-radius:10px;">
             <h3>Annual</h3>
             <p style="font-size:24px; margin:10px 0;"><strong>$549 / year</strong></p>
@@ -129,7 +194,7 @@
               Subscribe Annually
             </a>
           </div>
-      
+
         </div>
 
         <p style="margin-top:20px; font-size:0.95rem; color:#666;">
@@ -148,10 +213,81 @@
 
       <footer>
         <p>
-          SF Construction Intelligence uses publicly available permit information and organizes it into a paid research product for business use.
+          SF Construction Intelligence uses publicly available permit information and organizes it into a paid research
+          product for business use. <a class="terms-link" id="terms-link">Terms of Use</a> · <a class="terms-link"
+            id="privacy-link">Privacy Policy</a>
         </p>
       </footer>
     </div>
   </div>
+
+  <div class="modal-overlay" id="terms-modal">
+    <div class="modal">
+      <button class="modal-close" data-modal="terms-modal" aria-label="Close">&times;</button>
+      <h2>Terms of Use</h2>
+      <p>SF Construction Intelligence provides informational reports based on publicly available building permit data.
+      </p>
+      <p>The information provided is for general business intelligence purposes only. While we strive for accuracy, we
+        do not guarantee the completeness, reliability, or timeliness of any project information.</p>
+      <p>SF Construction Intelligence is not responsible for any business decisions made based on the information
+        provided.</p>
+      <p>Subscriptions are billed monthly or annually and may be canceled at any time. Access continues until the end of
+        the current billing period. Payments are non-refundable.</p>
+      <p>SF Construction Intelligence reserves the right to modify, update, or discontinue the service at any time.</p>
+      <p>All report content is proprietary and may not be redistributed, reproduced, or resold without written
+        permission.</p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="privacy-modal">
+    <div class="modal">
+      <button class="modal-close" data-modal="privacy-modal" aria-label="Close">&times;</button>
+      <h2>Privacy Policy</h2>
+      <p>SF Construction Intelligence respects your privacy.</p>
+      <p>We collect limited personal information such as your email address and payment details when you subscribe to
+        our service. Payment processing is handled securely by Stripe, and we do not store credit card information.</p>
+      <p>We use your email address solely to deliver subscription reports, service updates, and important account
+        information.</p>
+      <p>We do not sell, rent, or share your personal information with third parties except as necessary to provide the
+        service (such as payment processing providers).</p>
+      <p>We may collect basic analytics information (such as email opens or website visits) to improve our service.</p>
+      <p>If you have any questions about this policy, please contact: <a
+          href="mailto:info@sf-construction-intel.com">info@sf-construction-intel.com</a></p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function setupModal(linkId, modalId) {
+        var link = document.getElementById(linkId);
+        var modal = document.getElementById(modalId);
+        if (!link || !modal) return;
+
+        link.addEventListener('click', function () {
+          modal.classList.add('open');
+        });
+
+        modal.querySelector('.modal-close').addEventListener('click', function () {
+          modal.classList.remove('open');
+        });
+
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) modal.classList.remove('open');
+        });
+      }
+
+      setupModal('terms-link', 'terms-modal');
+      setupModal('privacy-link', 'privacy-modal');
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay.open').forEach(function (m) {
+            m.classList.remove('open');
+          });
+        }
+      });
+    })();
+  </script>
 </body>
+
 </html>
